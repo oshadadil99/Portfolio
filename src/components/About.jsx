@@ -12,7 +12,7 @@ const About = () => {
                 </div>
             </div>
             <p className='my-2 max-w-xl py-6 font-light tracking-tighter'>
-                        A highly ambitious and passionate individual who loves to discover the best
+                        A highlyyyyyy ambitious and passionate individual who loves to discover the best
                         paths to achieve goals.
                         I'm keen to study IT because I find it fascinating from an early age.
                         Programming and coding have been the passion of my life and also love
