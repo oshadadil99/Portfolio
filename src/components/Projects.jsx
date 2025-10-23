@@ -5,45 +5,72 @@ import project3 from '../assets/Projects/project-3.jpg';
 import project4 from '../assets/Projects/project-4.jpg';
 
 const Projects = () => {
+  const projects = [
+    {
+      id: 1,
+      image: project1,
+      title: "E-Commerce Website",
+      description: "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
+      technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"]
+    },
+    {
+      id: 2,
+      image: project2,
+      title: "Task Management App",
+      description: "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
+      technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"]
+    },
+    {
+      id: 3,
+      image: project3,
+      title: "Portfolio Website",
+      description: "A personal portfolio website showcasing projects, skills, and contact information.",
+      technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"]
+    },
+    {
+      id: 4,
+      image: project4,
+      title: "Blogging Platform",
+      description: "A platform to create, edit, and publish blogs with user authentication and comment features.",
+      technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"]
+    }
+  ];
+
   return (
-    <div className='border-b border-neutral-900 pb-4'>
-        <h1 className='my-20 text-center text-4xl'>Projects</h1>
-        <div>
-            <div className="mb-8 flex flex-wrap lg:justify-center">
-                <div className="w-full lg:w-1/2 mb-6 flex lg:items-start">
-                    <img src={project1} width={150} height={150} className="rounded" alt="Project 1" />
-                    <div className="ml-4">
-                        <h6 className="mb-2 font-semibold">E-Commerce Website</h6>
-                        <p className="mb-8 text-neutral-400">A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.</p>
-                        <p className="mr-40 rounded bg-neutral-900 px-2 py-1 text-sm text-center font-medium text-purple-900">HTML, CSS, React, Node.js, MongoDB</p>
+    <div className='border-b border-neutral-900 pb-20'>
+        <h1 className='my-20 text-center text-4xl font-bold text-white'>Projects</h1>
+        <div className="max-w-7xl mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {projects.map((project) => (
+                    <div 
+                        key={project.id}
+                        className="bg-neutral-900 rounded-lg overflow-hidden border border-neutral-800 hover:border-neutral-700 transition-all duration-300 hover:transform hover:scale-105"
+                    >
+                        <div className="relative overflow-hidden h-32">
+                            <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                            />
+                        </div>
+                        <div className="p-6">
+                            <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+                            <p className="text-neutral-400 mb-4 leading-relaxed">{project.description}</p>
+                            <div className="flex flex-wrap gap-2">
+                                {project.technologies.map((tech, index) => (
+                                    <span 
+                                        key={index}
+                                        className="px-3 py-1 bg-neutral-800 text-purple-400 text-sm rounded-full border border-neutral-700"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div className="w-full lg:w-1/2 mb-6 flex lg:items-start">
-                    <img src={project2} width={150} height={150} className="rounded" alt="Project 2" />
-                    <div className="ml-4">
-                    <h6 className="mb-2 font-semibold">Task Management App</h6>
-                    <p className="mb-8 text-neutral-400">An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.</p>
-                    <p className="mr-40 rounded bg-neutral-900 px-2 py-1 text-sm text-center font-medium text-purple-900">HTML, CSS, React, Node.js, MongoDB</p>                    </div>
-                </div>
-
-                <div className="w-full lg:w-1/2 mb-6 flex lg:items-start">
-                    <img src={project3} width={150} height={150} className="rounded" alt="Project 3" />
-                    <div className="ml-4">
-                    <h6 className="mb-2 font-semibold">Portfolio Website</h6>
-                    <p className="mb-8 text-neutral-400">A personal portfolio website showcasing projects, skills, and contact information.</p>
-                    <p className="mr-40 rounded bg-neutral-900 px-2 py-1 text-sm text-center font-medium text-purple-900">HTML, CSS, React, Node.js, MongoDB</p>                    </div>
-                </div>
-
-                <div className="w-full lg:w-1/2 mb-6 flex lg:items-start">
-                    <img src={project4} width={150} height={150} className="rounded" alt="Project 4" />
-                    <div className="ml-4">
-                    <h6 className="mb-2 font-semibold">Blogging Platform</h6>
-                    <p className="mb-8 text-neutral-400">A platform to create, edit, and publish blogs with user authentication and comment features.</p>
-                    <p className="mr-40 rounded bg-neutral-900 px-2 py-1 text-sm text-center font-medium text-purple-900">HTML, CSS, React, Node.js, MongoDB</p>                    </div>
-                </div>
+                ))}
             </div>
-    </div>
+        </div>
     </div>
   )
 }
