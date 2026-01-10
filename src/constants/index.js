@@ -50,7 +50,7 @@ export const PROJECTS = [
     title: "Task Management App",
     image: project2,
     description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
+      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.999",
     technologies: ["HTML", "CSS", "Angular", "Firebase"],
   },
   {
