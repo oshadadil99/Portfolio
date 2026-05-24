@@ -1,58 +1,74 @@
 import '../index.css';
 import { motion } from "framer-motion";
-import profilePic from '../assets/dude.jpg';
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: "easeOut" },
-});
+import { HiChevronDown } from "react-icons/hi";
+import bgImage from '../assets/home.png';
 
 export const Hero = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4 lg:mb-35">
-        <div className="flex flex-wrap">
-            <div className="w-full lg:w-1/2">
-                <div className="flex flex-col items-center lg:items-start">
-                    <motion.h1
-                      {...fadeUp(0.1)}
-                      className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 ig:tex8xl"
-                    >
-                        Oshada Dilshan
-                    </motion.h1>
-                    <motion.span {...fadeUp(0.25)} className='title-styling'>
-                        Software Engineering Undergraduate
-                    </motion.span>
-                    <motion.p {...fadeUp(0.4)} className='my-2 max-w-xl py-6 font-light tracking-tighter'>
-                        A highly ambitious and passionate individual who loves to discover the best
-                        paths to achieve goals.
-                        I'm keen to study IT because I find it fascinating from an early age.
-                        Programming and coding have been the passion of my life and also love
-                        graphic designing. I am an honest, reliable, and presentable individual with an
-                        outgoing personality and a comprehensive educational background. Apart
-                        from these technical things I love to spend my spare time reading and
-                        traveling. Being a student at the faculty of science ,university of kelaniya
-                        directed me to enhance the strengths of my life while eliminating weaknesses.
-                        I am eager to be challenged in order to grow my own skills by engaging in
-                        extra-curricular activities as well as volunteering programs.
-                    </motion.p>
-                </div>
-            </div>
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className='w-full lg:w-1/2 lg:p-8'
-            >
-                <div className='flex justify-center'>
-                    <img src={profilePic} alt="myDP" />
-                </div>
-            </motion.div>
-        </div>
+    <div className="relative w-full h-screen overflow-hidden border-b border-neutral-900">
+
+      {/* Background image */}
+      <img
+        src={bgImage}
+        alt="home background"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: 'center 15%' }}
+      />
+
+      {/* Left gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+      {/* Bottom gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+      {/* Text content — bottom left */}
+      <div className="absolute bottom-32 left-10 lg:left-20 max-w-xl">
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="text-5xl lg:text-7xl font-bold text-white mb-4 leading-tight"
+        >
+          Hi, I'm <span className="text-purple-400">Oshada</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+          className="text-lg lg:text-xl text-neutral-200 mb-3"
+        >
+          AI Engineer | AI Product Manager | Empowering brands scale through AI-driven Market Research 
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+          className="text-sm lg:text-base text-neutral-400 italic"
+        >
+          "Turning ideas into elegant, impactful digital solutions."
+        </motion.p>
+      </div>
+
+      {/* Scroll down indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-neutral-400 cursor-pointer"
+        onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+        >
+          <HiChevronDown className="text-2xl" />
+        </motion.div>
+        <span className="text-xs tracking-widest uppercase">Scroll Down</span>
+      </motion.div>
+
     </div>
-  )
+  );
 }
 
 export default Hero;
-
-
