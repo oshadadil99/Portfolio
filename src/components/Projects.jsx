@@ -1,4 +1,5 @@
 import '../index.css';
+import { motion } from "framer-motion";
 import project1 from '../assets/Projects/project-1.jpg';
 import project2 from '../assets/Projects/project-2.jpg';
 import project3 from '../assets/Projects/project-3.jpg';
@@ -38,17 +39,36 @@ const Projects = () => {
 
   return (
     <div className='border-b border-neutral-900 pb-20'>
-        <h1 className='my-20 text-center text-4xl font-bold text-white'>Projects</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className='my-20 text-center text-4xl font-bold text-white'
+        >
+          Projects
+        </motion.h1>
         <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            >
                 {projects.map((project) => (
-                    <div 
+                    <motion.div
                         key={project.id}
+                        variants={{
+                          hidden: { opacity: 0, y: 40 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
                         className="bg-neutral-900 rounded-lg overflow-hidden border border-neutral-800 hover:border-neutral-700 transition-all duration-300 hover:transform hover:scale-105"
                     >
                         <div className="relative overflow-hidden h-32">
-                            <img 
-                                src={project.image} 
+                            <img
+                                src={project.image}
                                 alt={project.title}
                                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                             />
@@ -58,7 +78,7 @@ const Projects = () => {
                             <p className="text-neutral-400 mb-4 leading-relaxed">{project.description}</p>
                             <div className="flex flex-wrap gap-2">
                                 {project.technologies.map((tech, index) => (
-                                    <span 
+                                    <span
                                         key={index}
                                         className="px-3 py-1 bg-neutral-800 text-purple-400 text-sm rounded-full border border-neutral-700"
                                     >
@@ -67,9 +87,9 @@ const Projects = () => {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     </div>
   )

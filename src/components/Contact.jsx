@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { motion } from "framer-motion";
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -55,9 +56,15 @@ const Contact = () => {
     };
 
     return (
-        <div className='border-b border-neutral-900 pb-20'>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className='border-b border-neutral-900 pb-20'
+        >
             <h1 className='my-10 text-center text-4xl font-bold text-white'>Get In Touch</h1>
-            
+
             <div className='text-center tracking-tighter bg-neutral-800 p-6 rounded-lg max-w-md mx-auto mb-10 border border-neutral-700'>
                 <p className="my-2 text-lg font-semibold text-white">Oshada Dilshan</p>
                 <p className="my-2 text-neutral-300 hover:text-blue-400 transition-colors">+94 70 363 3032</p>
@@ -116,7 +123,7 @@ const Contact = () => {
                     {loading ? 'Sending...' : 'Send Message'}
                 </button>
             </form>
-        </div>
+        </motion.div>
     );
 };
 
